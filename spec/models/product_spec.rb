@@ -38,6 +38,10 @@ RSpec.describe Product, type: :model do
     it 'with a negative price' do
       product.price = -100
     end
+
+    it 'without a numeric package_price' do
+      product.package_price = SecureRandom.hex
+    end
   end
 
   ####################

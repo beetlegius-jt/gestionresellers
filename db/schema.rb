@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 20160511024540) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "status"
+    t.decimal  "total_price", precision: 15, scale: 2
     t.date     "date"
     t.integer  "client_id"
     t.integer  "provider_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["client_id"], name: "index_orders_on_client_id", using: :btree
     t.index ["provider_id"], name: "index_orders_on_provider_id", using: :btree
   end

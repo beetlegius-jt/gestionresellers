@@ -26,6 +26,14 @@ RSpec.describe Order, type: :model do
     it 'without an included status' do
       order.status = SecureRandom.hex
     end
+
+    it 'without a numeric total_price' do
+      order.total_price = SecureRandom.hex
+    end
+
+    it 'without a negative total_price' do
+      order.total_price = -100
+    end
   end
 
   ####################
