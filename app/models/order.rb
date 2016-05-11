@@ -1,18 +1,17 @@
-class Product < ApplicationRecord
+class Order < ApplicationRecord
 
   # CONFIG
 
-  STATUSES = [AVAILABLE = 'available', UNAVAILABLE = 'unavailable']
+  STATUSES = [PENDING = 'pending', WAITING_PAYMENT = 'waiting_payment', PREPARED = 'prepared', CLOSED = 'closed']
 
+  belongs_to :client
   belongs_to :provider
 
   # CALLBACKS
 
   # VALIDATIONS
 
-  validates :name, presence: true
   validates :status, presence: true, inclusion: { in: STATUSES }
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   # SCOPES
 
