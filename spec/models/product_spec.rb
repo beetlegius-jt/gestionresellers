@@ -44,12 +44,31 @@ RSpec.describe Product, type: :model do
     end
   end
 
+  it 'is valid without a package_price' do
+    product.package_price = nil
+    expect(product).to be_valid
+  end
+
   ####################
   # RELATIONS
   ####################
 
   it 'belongs to provider' do
     expect(product).to respond_to(:provider)
+  end
+
+  ####################
+  # IMAGES
+  ####################
+
+  it 'has an image', slow: true do
+    expect(product).to respond_to(:image)
+    product.image = File.open('app/assets/images/sample.png')
+    product.save
+    expect(product.image.url).to be_a_kind_of(String)
+    product.image = nil
+    product.save
+    expect(product.image).to be_nil
   end
 
 end
