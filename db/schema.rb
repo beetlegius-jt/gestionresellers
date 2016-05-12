@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511024540) do
+ActiveRecord::Schema.define(version: 20160511180112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "serial_number"
+    t.boolean  "in_stock",      default: true
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["order_id"], name: "index_articles_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_articles_on_product_id", using: :btree
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -23,14 +34,34 @@ ActiveRecord::Schema.define(version: 20160511024540) do
     t.datetime "updated_at",                               null: false
   end
 
+  create_table "items", force: :cascade do |t|
+    t.decimal  "unit_price", precision: 15, scale: 2
+    t.integer  "quantity",                            default: 1
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.index ["order_id"], name: "index_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_items_on_product_id", using: :btree
+  end
+
+  create_table "movements", force: :cascade do |t|
+    t.decimal  "ammount",    precision: 15, scale: 2
+    t.integer  "order_id"
+    t.integer  "client_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["client_id"], name: "index_movements_on_client_id", using: :btree
+    t.index ["order_id"], name: "index_movements_on_order_id", using: :btree
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string   "status"
-    t.decimal  "total_price", precision: 15, scale: 2
     t.date     "date"
     t.integer  "client_id"
     t.integer  "provider_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["client_id"], name: "index_orders_on_client_id", using: :btree
     t.index ["provider_id"], name: "index_orders_on_provider_id", using: :btree
   end
@@ -54,6 +85,10 @@ ActiveRecord::Schema.define(version: 20160511024540) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "articles", "products"
+  add_foreign_key "items", "orders"
+  add_foreign_key "items", "products"
+  add_foreign_key "movements", "clients"
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "providers"
   add_foreign_key "products", "providers"

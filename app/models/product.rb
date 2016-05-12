@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id            :integer          not null, primary key
+#  name          :string
+#  image_uid     :string
+#  status        :string
+#  description   :text
+#  price         :decimal(15, 2)
+#  package_price :decimal(15, 2)
+#  provider_id   :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class Product < ApplicationRecord
 
   # CONFIG
@@ -5,6 +21,7 @@ class Product < ApplicationRecord
   STATUSES = [AVAILABLE = 'available', UNAVAILABLE = 'unavailable']
 
   belongs_to :provider
+  has_many :articles, dependent: :destroy
 
   dragonfly_accessor(:image)
 

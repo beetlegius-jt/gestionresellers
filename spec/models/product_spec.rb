@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id            :integer          not null, primary key
+#  name          :string
+#  image_uid     :string
+#  status        :string
+#  description   :text
+#  price         :decimal(15, 2)
+#  package_price :decimal(15, 2)
+#  provider_id   :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 require "rails_helper"
 
 RSpec.describe Product, type: :model do
@@ -8,7 +24,7 @@ RSpec.describe Product, type: :model do
   # VALIDATIONS
   ####################
 
-  context 'is invalid' do
+  describe 'is invalid' do
     after(:example) { expect(product).not_to be_valid }
 
     it 'without a name' do
@@ -55,6 +71,10 @@ RSpec.describe Product, type: :model do
 
   it 'belongs to provider' do
     expect(product).to respond_to(:provider)
+  end
+
+  it 'has many articles' do
+    expect(product).to respond_to(:articles)
   end
 
   ####################

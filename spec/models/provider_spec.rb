@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: providers
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Provider, type: :model do
@@ -8,7 +18,7 @@ RSpec.describe Provider, type: :model do
   # VALIDATIONS
   ####################
 
-  context 'is invalid' do
+  describe 'is invalid' do
     after(:example) { expect(provider).not_to be_valid }
 
     it 'without a name' do
@@ -19,8 +29,8 @@ RSpec.describe Provider, type: :model do
   ####################
   # RELATIONS
   ####################
-  
-  context 'has many' do
+
+  describe 'has many' do
     it 'orders' do
       expect(provider).to respond_to(:orders)
     end

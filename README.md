@@ -18,3 +18,5 @@
  * Cada producto comprado registra su número de serie
 * Un cliente puede consultar su estado de cuenta.
  * Puede ver los movimientos de los últimos 60 días.
+
+- - - -
