@@ -67,9 +67,9 @@ class Order < ApplicationRecord
 
   # ALIAS
 
-  # PRIVATE
+  # PROTECTED
 
-  private
+  protected
 
   def set_default_status
     self.status ||= WAITING_PAYMENT

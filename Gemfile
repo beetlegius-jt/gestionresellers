@@ -26,6 +26,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
   gem 'byebug', platform: :mri
+  gem 'capybara'
 end
 
 group :development do
@@ -42,3 +43,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dragonfly'
+gem 'devise'

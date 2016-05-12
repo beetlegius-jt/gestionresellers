@@ -43,6 +43,10 @@ RSpec.describe Client, type: :model do
     expect(client).to respond_to(:movements)
   end
 
+  it 'has many users' do
+    expect(client).to respond_to(:users)
+  end
+
   ####################
   # CALLBACKS
   ####################
@@ -63,6 +67,11 @@ RSpec.describe Client, type: :model do
         client.pay order
       end
       expect { client.destroy }.to change { Movement.count }.by -10
+    end
+
+    it 'users after destroy' do
+      user = FactoryGirl.create(:user, role: User::CLIENT, client: client)
+      expect { client.destroy }.to change { User.count }.by -1
     end
   end
 

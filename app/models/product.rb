@@ -2,16 +2,17 @@
 #
 # Table name: products
 #
-#  id            :integer          not null, primary key
-#  name          :string
-#  image_uid     :string
-#  status        :string
-#  description   :text
-#  price         :decimal(15, 2)
-#  package_price :decimal(15, 2)
-#  provider_id   :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id               :integer          not null, primary key
+#  name             :string
+#  image_uid        :string
+#  status           :string
+#  description      :text
+#  package_quantity :integer
+#  price            :decimal(15, 2)
+#  package_price    :decimal(15, 2)
+#  provider_id      :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 class Product < ApplicationRecord
@@ -42,8 +43,8 @@ class Product < ApplicationRecord
 
   # ALIAS
 
-  # PRIVATE
+  # PROTECTED
 
-  private
+  protected
 
 end

@@ -34,8 +34,8 @@ class Movement < ApplicationRecord
 
   # ALIAS
 
-  # PRIVATE
+  # PROTECTED
 
-  private
+  protected
 
 end

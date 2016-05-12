@@ -5,6 +5,7 @@
 #  id            :integer          not null, primary key
 #  serial_number :string
 #  in_stock      :boolean          default(TRUE)
+#  order_id      :integer
 #  product_id    :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

@@ -12,8 +12,9 @@ class Provider < ApplicationRecord
 
   # CONFIG
 
-  has_many :products, dependent: :destroy
   has_many :orders
+  has_many :products, dependent: :destroy
+  has_many :users, dependent: :destroy
 
   # CALLBACKS
 
@@ -29,8 +30,8 @@ class Provider < ApplicationRecord
 
   # ALIAS
 
-  # PRIVATE
+  # PROTECTED
 
-  private
+  protected
 
 end

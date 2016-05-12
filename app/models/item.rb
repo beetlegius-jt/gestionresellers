@@ -45,8 +45,8 @@ class Item < ApplicationRecord
 
   # ALIAS
 
-  # PRIVATE
+  # PROTECTED
 
-  private
+  protected
 
 end

@@ -15,6 +15,7 @@ class Client < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :movements, dependent: :destroy
+  has_many :users, dependent: :destroy
 
   # CALLBACKS
 
@@ -43,9 +44,9 @@ class Client < ApplicationRecord
 
   # ALIAS
 
-  # PRIVATE
+  # PROTECTED
 
-  private
+  protected
 
   def calculate_account_balance
     movements.sum(:ammount)

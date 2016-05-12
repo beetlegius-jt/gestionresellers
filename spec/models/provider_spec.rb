@@ -30,13 +30,28 @@ RSpec.describe Provider, type: :model do
   # RELATIONS
   ####################
 
-  describe 'has many' do
-    it 'orders' do
-      expect(provider).to respond_to(:orders)
-    end
+  it 'has many orders' do
+    expect(provider).to respond_to(:orders)
+  end
 
-    it 'products' do
-      expect(provider).to respond_to(:products)
+  it 'has many products' do
+    expect(provider).to respond_to(:products)
+  end
+
+  it 'has many users' do
+    expect(provider).to respond_to(:users)
+  end
+
+  ####################
+  # CALLBACKS
+  ####################
+
+  describe 'destroy all the associated' do
+    subject(:provider) { FactoryGirl.create(:provider) }
+
+    it 'users after destroy' do
+      user = FactoryGirl.create(:user, role: User::PROVIDER, provider: provider)
+      expect { provider.destroy }.to change { User.count }.by -1
     end
   end
 
