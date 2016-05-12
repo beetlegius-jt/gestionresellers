@@ -35,6 +35,14 @@ class Item < ApplicationRecord
     unit_price * quantity
   end
 
+  def can_be_prepared?
+    product.articles.in_stock.count >= quantity
+  end
+
+  def associate_articles_to_order
+    self.order.articles << product.articles.in_stock.limit(quantity)
+  end
+
   # ALIAS
 
   # PRIVATE

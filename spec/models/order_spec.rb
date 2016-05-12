@@ -78,10 +78,8 @@ RSpec.describe Order, type: :model do
     subject(:order) { FactoryGirl.create(:order) }
 
     it 'items after destroy' do
-      10.times do
-        order.items << FactoryGirl.build(:item)
-      end
-      expect { order.destroy }.to change { Item.count }.by -10
+      3.times { FactoryGirl.create(:item, order: order) }
+      expect { order.destroy }.to change { Item.count }.by -3
     end
   end
 
@@ -93,8 +91,11 @@ RSpec.describe Order, type: :model do
     before(:example) do
       order.status = Order::WAITING_PAYMENT
       order.movement = FactoryGirl.build(:movement)
-      10.times do
-        order.items << FactoryGirl.build(:item)
+      3.times do
+        item = FactoryGirl.create(:item, order: order)
+        item.quantity.times do
+          FactoryGirl.create(:article, product: item.product)
+        end
       end
     end
 
@@ -112,8 +113,7 @@ RSpec.describe Order, type: :model do
       expect { order.mark_as_prepared }.to raise_exception { Order::CannotBePrepared }
     end
 
-    it 'reserve the correct ammount of articles' do
-      pending
+    it 'reserve the correct ammount of articles', refactor: true do
       expect { order.mark_as_prepared }.to change { order.articles.count }.from(0).to(order.items.sum(:quantity))
     end
 
@@ -125,9 +125,9 @@ RSpec.describe Order, type: :model do
 
   context '#mark_as_closed' do
     before(:example) do
+      FactoryGirl.create(:movement, order: order)
       order.status = Order::PREPARED
-      order.movement = FactoryGirl.build(:movement)
-      order.items << FactoryGirl.build(:item)
+      3.times { FactoryGirl.create(:item, order: order) }
     end
 
     it 'respond to method' do

@@ -71,11 +71,12 @@ ActiveRecord::Schema.define(version: 20160511180112) do
     t.string   "image_uid"
     t.string   "status"
     t.text     "description"
-    t.decimal  "price",         precision: 15, scale: 2
-    t.decimal  "package_price", precision: 15, scale: 2
+    t.integer  "package_quantity"
+    t.decimal  "price",            precision: 15, scale: 2
+    t.decimal  "package_price",    precision: 15, scale: 2
     t.integer  "provider_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
   end
 

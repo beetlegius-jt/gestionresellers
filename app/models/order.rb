@@ -51,9 +51,9 @@ class Order < ApplicationRecord
   def mark_as_prepared
     if can_be_prepared?
       update status: PREPARED
-      # Reserve articles
+      items.each(&:associate_articles_to_order)
     else
-      raise CannotBePrepared.new("The client has to pay first")
+      raise CannotBePrepared.new("Please check for stock of all the items and if the customer has already paid.")
     end
   end
 
@@ -76,7 +76,7 @@ class Order < ApplicationRecord
   end
 
   def can_be_prepared?
-    status == WAITING_PAYMENT && movement.present?
+    status == WAITING_PAYMENT && movement.present? && items.all?(&:can_be_prepared?)
   end
 
   def can_be_closed?

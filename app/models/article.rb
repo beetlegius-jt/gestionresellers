@@ -25,6 +25,8 @@ class Article < ApplicationRecord
 
   # SCOPES
 
+  scope :in_stock, -> { where in_stock: true }
+
   # CLASS METHODS
 
   # INSTANCE METHODS

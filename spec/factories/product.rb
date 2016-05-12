@@ -8,6 +8,7 @@ FactoryGirl.define do
     provider
 
     factory :package_product do
+      package_quantity 20
       package_price { self.price * 0.9 }
     end
 
