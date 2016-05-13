@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to 'Back', products_path, class: 'btn btn-primary btn-sm pull-right' %>
+  <h1>
+    <%= @product.name %>
+    <small class="text-success"><%= @product.status %></small>
+  </h1>
+</div>
+
+<p>
+  <%= image_tag @product.image.url if @product.image.present? %>
+  <%= simple_format @product.description.to_s %>
+  <h4><span class="label label-info"><%= number_to_currency @product.price %></span></h4>
+</p>

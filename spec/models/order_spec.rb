@@ -17,6 +17,10 @@ RSpec.describe Order, type: :model do
 
   subject(:order) { FactoryGirl.build(:order) }
 
+  it 'default status is waiting payment' do
+    expect(order.status).to eq(Order::WAITING_PAYMENT)
+  end
+
   ####################
   # VALIDATIONS
   ####################
@@ -40,10 +44,6 @@ RSpec.describe Order, type: :model do
       order.status = SecureRandom.hex
     end
 
-  end
-
-  it 'default status is waiting payment' do
-    expect(order.status).to eq(Order::WAITING_PAYMENT)
   end
 
   ####################

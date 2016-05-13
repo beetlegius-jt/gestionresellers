@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:name) { |i| "Product #{i}" }
     status 'available'
     description 'Best product ever'
-    image_uid nil
+    image { File.open 'app/assets/images/sample.png' }
     price { rand(100.00) }
     provider
 

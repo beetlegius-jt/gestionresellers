@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationController, type: :controller do
+RSpec.describe HomeController, type: :controller do
 
   let(:user_client) { FactoryGirl.create(:user_client) }
   let(:user_provider) { FactoryGirl.create(:user_provider) }
@@ -16,7 +16,7 @@ RSpec.describe ApplicationController, type: :controller do
     context 'as anonymous' do
       it 'redirects me to the new session path' do
         get :index
-        expect(response.location).to eq(new_user_session_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe ApplicationController, type: :controller do
       it 'redirects me to my dashboard' do
         sign_in user_client
         get :index
-        expect(response.location).to eq(dashboard_url)
+        expect(response).to redirect_to(dashboard_url)
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe ApplicationController, type: :controller do
       it 'redirects me to my dashboard' do
         sign_in user_provider
         get :index
-        expect(response.location).to eq(dashboard_url)
+        expect(response).to redirect_to(dashboard_url)
       end
     end
 
@@ -41,7 +41,5 @@ RSpec.describe ApplicationController, type: :controller do
     end
 
   end
-
-
 
 end

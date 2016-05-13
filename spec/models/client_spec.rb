@@ -11,11 +11,11 @@
 
 require 'rails_helper'
 
-RSpec.describe Client, type: :model, focus: true do
+RSpec.describe Client, type: :model do
 
   subject!(:client) { FactoryGirl.create(:client) }
 
-  it 'account balance starts empty' do
+  it 'default account balance is 0' do
     expect(client.account_balance).to be_zero
   end
 

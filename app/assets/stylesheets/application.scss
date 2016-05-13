@@ -1,0 +1,8 @@
+@import 'bootstrap-sprockets';
+@import 'font-awesome';
+@import 'bootstrap';
+
+body { padding-top: 60px; padding-bottom: 30px; }
+table.table tbody tr {
+  td, th { vertical-align: middle; }
+}

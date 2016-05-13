@@ -1,0 +1,9 @@
+<tr>
+  <td><%= image_tag product.image.thumb('50x50#c').url, class: 'img-responsive' if product.image.present? %></td>
+  <td><%= product.name %></td>
+  <td><%= number_to_currency product.price %></td>
+  <td><%= content_tag :span, product.status, class: 'label label-success' %></td>
+  <td>
+    <%= link_to 'More info', product, class: 'btn btn-primary btn-sm' %>
+  </td>
+</tr>
