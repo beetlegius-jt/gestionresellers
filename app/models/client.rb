@@ -42,6 +42,10 @@ class Client < ApplicationRecord
     update account_balance: calculate_account_balance
   end
 
+  def main_user
+    users.first
+  end
+
   # ALIAS
 
   # PROTECTED

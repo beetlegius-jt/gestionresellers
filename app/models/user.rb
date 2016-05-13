@@ -49,6 +49,8 @@ class User < ApplicationRecord
 
   # SCOPES
 
+  default_scope -> { order :created_at }
+
   # CLASS METHODS
 
   # INSTANCE METHODS

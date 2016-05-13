@@ -13,13 +13,14 @@ require 'rails_helper'
 
 RSpec.describe Client, type: :model do
 
-  subject(:client) { FactoryGirl.build(:client) }
+  subject!(:client) { FactoryGirl.create(:client) }
 
   ####################
   # VALIDATIONS
   ####################
 
   describe 'is invalid' do
+    subject(:client) { FactoryGirl.build(:client) }
     after(:example) { expect(client).not_to be_valid }
 
     it 'without a name' do
@@ -52,7 +53,6 @@ RSpec.describe Client, type: :model do
   ####################
 
   describe 'destroy all the associated' do
-    subject(:client) { FactoryGirl.create(:client) }
 
     it 'orders after destroy' do
       10.times do
@@ -81,7 +81,6 @@ RSpec.describe Client, type: :model do
 
   context '#pay' do
 
-    subject(:client) { FactoryGirl.create(:client) }
     subject(:order) { FactoryGirl.create(:order) }
     before(:example) { client.pay order }
 
@@ -103,7 +102,6 @@ RSpec.describe Client, type: :model do
 
   context '#receive_payment' do
 
-    subject(:client) { FactoryGirl.create(:client) }
     before(:example) { client.receive_payment 1000 }
 
     it 'respond to method' do
@@ -120,6 +118,20 @@ RSpec.describe Client, type: :model do
       end
     end
 
+  end
+
+  context '#main_user' do
+    let!(:user1) { FactoryGirl.create(:user_client, client: client) }
+    let!(:user2) { FactoryGirl.create(:user_client, client: client) }
+    let!(:user3) { FactoryGirl.create(:user_client, client: client) }
+
+    it 'respond to method' do
+      expect(client).to respond_to(:main_user)
+    end
+
+    it 'returns the first user' do
+      expect(client.main_user).to eq(user1)
+    end
   end
 
 end
