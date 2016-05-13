@@ -14,6 +14,7 @@ Provider.destroy_all
 
 product1 = FactoryGirl.create(:product)
 product2 = FactoryGirl.create(:product)
+product3 = FactoryGirl.create(:package_product)
 
 puts "#{Product.count} products created"
 

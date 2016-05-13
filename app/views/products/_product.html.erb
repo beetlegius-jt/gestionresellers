@@ -4,6 +4,7 @@
   <td><%= number_to_currency product.price %></td>
   <td><%= content_tag :span, product.status, class: 'label label-success' %></td>
   <td>
+    <%= product.package_tag %>
     <%= link_to 'More info', product, class: 'btn btn-primary btn-sm' %>
   </td>
 </tr>

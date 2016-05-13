@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Orders", type: :feature do
+feature Order, type: :feature do
   let(:user_client) { FactoryGirl.create(:user_client) }
   let(:user_provider) { FactoryGirl.create(:user_provider) }
 
@@ -24,12 +24,12 @@ feature "Orders", type: :feature do
       end
 
       it 'shows only the last 60 days orders' do
-        expect(page).not_to have_content(old_order.id)
+        expect(page).not_to have_selector("#order_#{old_order.id}")
       end
 
       it 'shows only the current client orders' do
-        expect(page).not_to have_content(provider_order.id)
-        expect(page).not_to have_content(external_order.id)
+        expect(page).not_to have_selector("#order_#{provider_order.id}")
+        expect(page).not_to have_selector("#order_#{external_order.id}")
       end
     end
 
@@ -40,19 +40,19 @@ feature "Orders", type: :feature do
       end
 
       it 'shows the basic information of each order' do
-        expect(page).to have_content(order.id)
+        expect(page).to have_selector("#order_#{order.id}")
         expect(page).to have_content(order.date)
         expect(page).to have_content(order.total_price)
         expect(page).to have_content(order.status)
       end
 
       it 'shows only the last 60 days orders' do
-        expect(page).not_to have_content(old_order.id)
+        expect(page).not_to have_selector("#order_#{old_order.id}")
       end
 
       it 'shows only the current client provider' do
-        expect(page).to have_content(provider_order.id)
-        expect(page).not_to have_content(external_order.id)
+        expect(page).to have_selector("#order_#{provider_order.id}")
+        expect(page).not_to have_selector("#order_#{external_order.id}")
       end
     end
   end

@@ -54,3 +54,6 @@ gem 'devise-bootstrap-views'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'activemodel-serializers-xml'#, github: 'rails/activemodel-serializers-xml'

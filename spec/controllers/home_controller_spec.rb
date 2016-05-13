@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe HomeController, type: :controller do
 
+  it 'inherits from ProtectedController' do
+    expect(subject).to be_a_kind_of(ProtectedController)
+  end
+  
   let(:user_client) { FactoryGirl.create(:user_client) }
   let(:user_provider) { FactoryGirl.create(:user_provider) }
   let(:user_admin) { FactoryGirl.create(:user_admin) }

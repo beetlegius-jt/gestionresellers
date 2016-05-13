@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe DashboardController, type: :controller do
 
+  it 'inherits from ProtectedController' do
+    expect(subject).to be_a_kind_of(ProtectedController)
+  end
+
   let(:user_client) { FactoryGirl.create(:user_client) }
   before(:example) { sign_in user_client }
 
