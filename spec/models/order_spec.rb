@@ -90,7 +90,7 @@ RSpec.describe Order, type: :model do
   context '#mark_as_prepared' do
     before(:example) do
       order.status = Order::WAITING_PAYMENT
-      order.movement = FactoryGirl.build(:movement)
+      order.movement = FactoryGirl.create(:movement)
       3.times do
         item = FactoryGirl.create(:item, order: order)
         item.quantity.times do
@@ -118,14 +118,13 @@ RSpec.describe Order, type: :model do
     end
 
     it 'changes status to prepared' do
-      order.movement = FactoryGirl.create(:movement)
       expect { order.mark_as_prepared }.to change { order.status }.from(Order::WAITING_PAYMENT).to(Order::PREPARED)
     end
   end
 
   context '#mark_as_closed' do
     before(:example) do
-      FactoryGirl.create(:movement, order: order)
+      order.movement = FactoryGirl.create(:movement)
       order.status = Order::PREPARED
       3.times { FactoryGirl.create(:item, order: order) }
     end

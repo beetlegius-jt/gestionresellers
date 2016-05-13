@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Product.destroy_all
-Provider.destroy_all
-Client.destroy_all
 User.destroy_all
+Order.destroy_all
+Product.destroy_all
+Client.destroy_all
+Provider.destroy_all
 
 product1 = FactoryGirl.create(:product)
 product2 = FactoryGirl.create(:product)
@@ -22,6 +23,17 @@ client1 = Client.create name: 'Guillermo'
 client2 = Client.create name: 'Luciano'
 
 puts "#{Client.count} clients created"
+
+for client in Client.all
+  3.times do
+    order = FactoryGirl.create(:order, client: client, provider: provider)
+    rand(1..4).times do
+      FactoryGirl.create(:item, order: order)
+    end
+  end
+end
+
+puts "#{Order.count} orders created with #{Item.count} items"
 
 user_admin = User.create! email: 'admin@gmail.com', password: 'secret', role: User::ADMIN
 user_provider = provider.users.create! email: 'provider@xaver.com.ar', password: 'secret', role: User::PROVIDER

@@ -1,8 +1,10 @@
 class DashboardController < ProtectedController
 
   def index
-    render_client   and return if current_user.is_role? User::CLIENT
-    render_provider and return if current_user.is_role? User::PROVIDER
+    case current_user.role
+    when User::CLIENT then render_client
+    when User::PROVIDER then render_provider
+    end
   end
 
   protected

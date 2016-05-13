@@ -13,7 +13,7 @@
 
 FactoryGirl.define do
   factory :order do
-    date Date.today
+    date { rand 60.days.ago.to_date..Date.today }
     client
     provider
   end

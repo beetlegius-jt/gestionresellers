@@ -44,6 +44,10 @@ RSpec.describe Item, type: :model do
       item.quantity = -1
     end
 
+    it 'with a zero quantity' do
+      item.quantity = 0
+    end
+
     it 'without an unit price' do
       item.unit_price = nil
     end
@@ -53,7 +57,7 @@ RSpec.describe Item, type: :model do
     end
 
     it 'with a negative unit price' do
-      item.unit_price = -100
+      item.unit_price = -1
     end
   end
 

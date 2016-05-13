@@ -1,11 +1,10 @@
 class HomeController < ProtectedController
 
   def index
-    if current_user.is_role?(User::CLIENT, User::PROVIDER)
-      redirect_to dashboard_path
-    else
-      render text: 'WAIT ADMIN!'
+    case current_user.role
+    when User::CLIENT, User::PROVIDER then redirect_to dashboard_path
+    when User::ADMIN then render text: 'WAIT ADMIN'
     end
   end
-  
+
 end

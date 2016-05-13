@@ -1,0 +1,53 @@
+<div class="page-header">
+  <%= link_to 'Back', orders_path, class: 'btn btn-primary btn-sm pull-right' %>
+  <h1>
+    Order #<%= @order.id %>
+    <small class="text-success"><%= @order.status %></small>
+  </h1>
+</div>
+
+<table class="table table-bordered text-center">
+  <tbody>
+    <tr>
+      <td>
+        <b>Date</b>
+        <br />
+        <%= l(@order.date) %>
+      </td>
+      <td>
+        <b>Total price</b>
+        <br />
+        <%= number_to_currency @order.total_price %>
+      </td>
+      <td>
+        <b>Status</b>
+        <br />
+        <%= content_tag :span, @order.status, class: 'label label-success' %>
+      </td>
+      <td>
+        <b>Client</b>
+        <br />
+        <%= @order.client.name %>
+      </td>
+      <td>
+        <b>Provider</b>
+        <br />
+        <%= @order.provider.name %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Items</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Product</th>
+      <th>Unit price</th>
+      <th>Total price</th>
+    </tr>
+  </thead>
+  <%= content_tag :tbody, render(@order.items) %>
+</table>

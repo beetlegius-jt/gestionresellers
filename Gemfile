@@ -49,6 +49,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dragonfly'
 gem 'devise'
+gem 'devise-bootstrap-views'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

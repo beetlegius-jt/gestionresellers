@@ -70,6 +70,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise-bootstrap-views (0.0.8)
     diff-lcs (1.2.5)
     dragonfly (1.0.12)
       addressable (~> 2.3)
@@ -222,6 +223,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.1.0)
   devise
+  devise-bootstrap-views
   dragonfly
   factory_girl_rails
   font-awesome-rails

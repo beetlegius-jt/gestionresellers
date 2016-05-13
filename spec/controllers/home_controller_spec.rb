@@ -13,7 +13,7 @@ RSpec.describe HomeController, type: :controller do
       expect(response).to have_http_status(302)
     end
 
-    context 'as anonymous' do
+    context 'as visitor' do
       it 'redirects me to the new session path' do
         get :index
         expect(response).to redirect_to(new_user_session_url)

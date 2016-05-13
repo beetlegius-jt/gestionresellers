@@ -40,6 +40,9 @@ class Order < ApplicationRecord
 
   # SCOPES
 
+  default_scope -> { order(date: :desc) }
+  scope :recent, -> { where "date >= :from", from: 60.days.ago }
+
   # CLASS METHODS
 
   # INSTANCE METHODS

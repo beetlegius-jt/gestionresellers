@@ -1,0 +1,9 @@
+<%= content_tag :tr, id: dom_id(order) do %>
+  <td>#<%= order.id %></td>
+  <td><%= order.date %></td>
+  <td><%= number_to_currency order.total_price %></td>
+  <td><span class="label label-success"><%= order.status %></span></td>
+  <td>
+    <%= link_to 'View details', order, class: 'btn btn-primary btn-sm' %>
+  </td>
+<% end %>

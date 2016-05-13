@@ -1,8 +1,13 @@
 @import 'bootstrap-sprockets';
 @import 'font-awesome';
 @import 'bootstrap';
+@import 'devise_bootstrap_views';
 
-body { padding-top: 60px; padding-bottom: 30px; }
+body {
+  padding-bottom: 30px;
+  padding-top: 60px;
+}
+
 table.table tbody tr {
   td, th { vertical-align: middle; }
 }

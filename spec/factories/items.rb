@@ -13,8 +13,8 @@
 
 FactoryGirl.define do
   factory :item do
-    unit_price { rand(100.00) }
-    quantity { rand(3) }
+    unit_price { rand(1.0..100.0) }
+    quantity { rand(1..3) }
     product
     order
   end
