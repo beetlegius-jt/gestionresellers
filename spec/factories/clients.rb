@@ -12,6 +12,5 @@
 FactoryGirl.define do
   factory :client do
     sequence(:name) { |i| "Client #{i}" }
-    account_balance 0
   end
 end

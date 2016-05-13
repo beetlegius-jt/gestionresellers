@@ -19,6 +19,8 @@ class Client < ApplicationRecord
 
   # CALLBACKS
 
+  after_initialize :set_account_balance
+
   # VALIDATIONS
 
   validates :name, presence: true
@@ -54,5 +56,9 @@ class Client < ApplicationRecord
 
   def calculate_account_balance
     movements.sum(:ammount)
+  end
+
+  def set_account_balance
+    self.account_balance = calculate_account_balance
   end
 end

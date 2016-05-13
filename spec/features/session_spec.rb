@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Session", type: :feature, focus: true do
+feature "Session", type: :feature do
   let(:user_client) { FactoryGirl.create(:user_client) }
   let(:user_provider) { FactoryGirl.create(:user_client) }
   let(:user_admin) { FactoryGirl.create(:user_client) }
