@@ -1,15 +1,15 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  before_action :authenticate_user!
   protect_from_forgery with: :exception, prepend: true
+  before_action :authenticate_user!
 
   # user_signed_in?
   # current_user
   # user_session
 
   def index
-    if current_provider && current_client
+    if current_user.is_role?(User::CLIENT, User::PROVIDER)
       redirect_to dashboard_path
     else
       render text: 'WAIT ADMIN!'
