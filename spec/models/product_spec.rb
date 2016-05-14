@@ -92,4 +92,15 @@ RSpec.describe Product, type: :model do
     expect(product.image).to be_nil
   end
 
+  ####################
+  # SCOPES
+  ####################
+
+  describe 'Product#search' do
+    it 'search over the title of the product' do
+      product.save
+      expect(Product.search(product.name)).to include(product)
+    end
+  end
+
 end

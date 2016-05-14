@@ -1,7 +1,7 @@
 class ProductsController < ProtectedController
 
   def index
-    @products = ProductDecorator.decorate_collection(Product.all)
+    @products = current_provider.products.search(params[:search]).page(params[:page]).decorate
   end
 
   def show

@@ -57,3 +57,5 @@ gem 'font-awesome-rails'
 
 gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 gem 'activemodel-serializers-xml'#, github: 'rails/activemodel-serializers-xml'
+
+gem 'kaminari', github: "amatsuda/kaminari", branch: '0-17-stable'

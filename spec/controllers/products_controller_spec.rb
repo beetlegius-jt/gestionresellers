@@ -5,7 +5,7 @@ RSpec.describe ProductsController, type: :controller do
   it 'inherits from ProtectedController' do
     expect(subject).to be_a_kind_of(ProtectedController)
   end
-  
+
   let(:product) { FactoryGirl.create(:product) }
 
   let(:user_client) { FactoryGirl.create(:user_client) }

@@ -143,4 +143,26 @@ RSpec.describe Order, type: :model do
     end
   end
 
+  ####################
+  # SCOPES
+  ####################
+
+  describe 'Order#recent' do
+    it 'returns the last 60 days orders' do
+      current_order = FactoryGirl.create(:order)
+      old_order = FactoryGirl.create(:order, date: 61.days.ago)
+      expect(Order.recent).to include(current_order)
+      expect(Order.recent).not_to include(old_order)
+    end
+  end
+
+  describe 'Order#current' do
+    it 'returns the current orders' do
+      current_order = FactoryGirl.create(:order, status: Order::WAITING_PAYMENT)
+      closed_order  = FactoryGirl.create(:order, status: Order::CLOSED)
+      expect(Order.current).to include(current_order)
+      expect(Order.current).not_to include(closed_order)
+    end
+  end
+
 end

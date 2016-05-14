@@ -1,4 +1,4 @@
-<tr>
+<%= content_tag :tr, id: dom_id(product) do %>
   <td><%= image_tag product.image.thumb('50x50#c').url, class: 'img-responsive' if product.image.present? %></td>
   <td><%= product.name %></td>
   <td><%= number_to_currency product.price %></td>
@@ -7,4 +7,4 @@
     <%= product.package_tag %>
     <%= link_to 'More info', product, class: 'btn btn-primary btn-sm' %>
   </td>
-</tr>
+<% end %>

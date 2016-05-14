@@ -11,7 +11,6 @@ feature "Nav", type: :feature do
     it { expect(page).to have_link('Products', href: products_path) }
     it { expect(page).to have_link('Orders', href: orders_path) }
     it { expect(page).to have_link('Sign out', href: destroy_user_session_path) }
-    it { expect(page).not_to have_link('Sign in', href: new_user_session_path) }
   end
 
   context 'as client' do
@@ -33,7 +32,6 @@ feature "Nav", type: :feature do
     it { expect(page).not_to have_link('Products', href: products_path) }
     it { expect(page).not_to have_link('Orders', href: orders_path) }
     it { expect(page).not_to have_link('Sign out', href: destroy_user_session_path) }
-    it { expect(page).to have_link('Sign in', href: new_user_session_path) }
   end
 
 end

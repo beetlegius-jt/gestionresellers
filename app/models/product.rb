@@ -37,6 +37,8 @@ class Product < ApplicationRecord
 
   # SCOPES
 
+  scope :search, -> (search) { where "name ILIKE :search", search: "%#{search}%" }
+
   # CLASS METHODS
 
   # INSTANCE METHODS

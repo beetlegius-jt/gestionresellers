@@ -1,12 +1,28 @@
+<%= content_for :head do %>
+  <%= rel_next_prev_link_tags @products %>
+<% end %>
+
 <div class="page-header">
   <h1>
     Products
-    <small><%= pluralize @products.size, 'product' %></small>
+    <small><%= page_entries_info @products %></small>
   </h1>
 </div>
 
 <div class="row">
+  <div class="col-md-12 text-right">
+    <%= form_tag nil, method: :get, class: 'form-inline' do %>
+      <div class="form-group">
+        <%= label_tag 'Search' %>
+        <%= text_field_tag :search, params[:search], class: 'form-control', autofocus: true %>
+        <%= button_tag 'Search', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <%= paginate @products %>
+  </div>
+
   <div class="col-md-12">
+
     <table class="table table-striped">
       <thead>
         <tr>

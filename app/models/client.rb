@@ -48,6 +48,10 @@ class Client < ApplicationRecord
     users.first
   end
 
+  def current_orders
+    orders.current
+  end
+
   # ALIAS
 
   # PROTECTED

@@ -42,6 +42,7 @@ class Order < ApplicationRecord
 
   default_scope -> { order(date: :desc) }
   scope :recent, -> { where "date >= :from", from: 60.days.ago }
+  scope :current, -> { where status: [WAITING_PAYMENT, PREPARED] }
 
   # CLASS METHODS
 

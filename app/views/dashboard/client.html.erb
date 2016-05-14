@@ -1,4 +1,25 @@
 <div class="jumbotron">
-  <h1>Welcome <%= @client.name %></h1>
-  <p>Logged in as client</p>
+  <div class="container">
+    <h1>Welcome <%= @client.name %></h1>
+    <p>Logged in as client</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Date</th>
+            <th>Total price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <%= content_tag :tbody, render(@client.current_orders) %>
+      </table>
+    </div>
+  </div>
 </div>

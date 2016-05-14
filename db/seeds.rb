@@ -12,13 +12,11 @@ Product.destroy_all
 Client.destroy_all
 Provider.destroy_all
 
-product1 = FactoryGirl.create(:product)
-product2 = FactoryGirl.create(:product)
-product3 = FactoryGirl.create(:package_product)
+provider = Provider.create name: 'Xaver'
+
+60.times { FactoryGirl.create (rand(1).zero? ? :product : :package_product), provider: provider }
 
 puts "#{Product.count} products created"
-
-provider = Provider.create name: 'Xaver'
 
 client1 = Client.create name: 'Guillermo'
 client2 = Client.create name: 'Luciano'

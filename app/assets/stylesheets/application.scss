@@ -4,10 +4,32 @@
 @import 'devise_bootstrap_views';
 
 body {
-  padding-bottom: 30px;
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 table.table tbody tr {
   td, th { vertical-align: middle; }
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer .container .text-muted {
+  margin: 20px 0;
 }

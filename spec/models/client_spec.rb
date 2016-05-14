@@ -138,4 +138,15 @@ RSpec.describe Client, type: :model do
     end
   end
 
+  context '#current_orders' do
+    it 'respond to method' do
+      expect(client).to respond_to(:current_orders)
+    end
+
+    it 'returns only the current orders' do
+      current_orders = client.orders.current
+      expect(client.current_orders).to eq(current_orders)
+    end
+  end
+
 end
