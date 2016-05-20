@@ -11,7 +11,7 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, 'xaver.com.ar'
-set :deploy_to, '/home/xaver/apps/gestionresellers'
+# set :deploy_to, '/home/xaver/apps/gestionresellers'
 set :repository, 'git@github.com:beetlegius/gestionresellers.git'
 set :branch, 'master'
 
@@ -80,15 +80,12 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+      # queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       # queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
-      queue "bin/rails s -d -p 80800"
+      # queue "bin/rails s -e production -d -p 7000"
+      # queue "sudo service nginx restart"
     end
   end
-end
-
-task :restart do
-  queue "sudo service nginx restart"
 end
 
 # For help in making your deploy script, see the Mina documentation:
