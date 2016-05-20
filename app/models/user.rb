@@ -27,9 +27,9 @@ class User < ApplicationRecord
   ROLES = [CLIENT = 'client', PROVIDER = 'provider', ADMIN = 'admin']
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :trackable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :validatable
 
   belongs_to :client, required: false
   belongs_to :provider, required: false
