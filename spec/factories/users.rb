@@ -22,7 +22,7 @@
 
 FactoryGirl.define do
   factory :user do
-    sequence(:email) { |i| "user#{i}@xaver.com.ar" }
+    sequence(:email) { |i| "user#{i}@beetlegius.com.ar" }
     password "secret"
     password_confirmation "secret"
     provider

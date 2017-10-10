@@ -12,7 +12,7 @@ Product.destroy_all
 Client.destroy_all
 Provider.destroy_all
 
-provider = Provider.create name: 'Xaver'
+provider = Provider.create name: 'Beetlegius'
 
 60.times { FactoryGirl.create (rand(1).zero? ? :product : :package_product), provider: provider }
 
@@ -35,7 +35,7 @@ end
 puts "#{Order.count} orders created with #{Item.count} items"
 
 user_admin = User.create! email: 'admin@gmail.com', password: 'secret', role: User::ADMIN
-user_provider = provider.users.create! email: 'provider@xaver.com.ar', password: 'secret', role: User::PROVIDER
+user_provider = provider.users.create! email: 'provider@beetlegius.com.ar', password: 'secret', role: User::PROVIDER
 user_client1 = provider.users.create! email: 'guillermo@gmail.com', password: 'secret', role: User::CLIENT, client: client1
 user_client2 = provider.users.create email: 'luciano@gmail.com', password: 'secret', role: User::CLIENT, client: client2
 
